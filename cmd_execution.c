@@ -7,15 +7,16 @@
 */
 void execute_command(char **argv)
 {
-	char *string_cmd = malloc(strlen(argv[0]) + 1);
-	if (string_cmd == NULL)
+	char *string_cmd = NULL;
+	(void)string_cmd;
+
+	if (argv != NULL)
 	{
-		custom_exit(1, "failed to alloce memory for command!\n");
+		string_cmd = argv[0];
+	
+		if (execve(argv[0], argv, NULL) == -1)
+		{
+			custom_exit(1, "Command not found!\n");
+		};
 	}
-	strcpy(string_cmd, argv[0]);
-	if (execve(string_cmd, argv, NULL) == -1)
-	{
-		custom_exit(1, "Command not found!\n");
-	}
-	free(string_cmd);
 }
