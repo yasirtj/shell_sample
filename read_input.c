@@ -8,12 +8,12 @@
 */
 
 
-void read_user_input(char *user_input)
+void read_user_input(char *user_input, size_t user_input_size)
 {
 	char *string_copy, *generated_token, *delimeter = " ";
 	char **new_tokens;
 	ssize_t read_char_num;
-	size_t user_input_size = 0, number_of_tokens = 0, i = 0;
+	size_t number_of_tokens = 0, i = 0;
 
 	read_char_num = getline(&user_input, &user_input_size, stdin);
 	if (read_char_num == -1)

@@ -11,15 +11,14 @@ int main(int argc __attribute__((unused)), char **argv)
 {
 	char *user_input = NULL;
 /* 	char *delimeter = " "; */
-	/* char **cmd = NULL;
-	size_t i, cmd_size = 0;*/
-	int i;
+	/* char **cmd = NULL;*/
+	size_t i, cmd_size = 0;
 
 for (;;)
 	{
 		view_prompt();
 		/* getline(&user_input, &cmd_size, stdin); */
-		read_user_input(user_input);
+		read_user_input(user_input, cmd_size);
 		execute_command(argv);
 		for (i = 0; argv[i] != NULL; i++)
 		{

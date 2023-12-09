@@ -17,5 +17,4 @@ void execute_command(char **argv)
 			custom_exit(1, "Command not found!\n");
 		};
 	}
-	
 }
