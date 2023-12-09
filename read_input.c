@@ -7,7 +7,6 @@
  * Return: Success
 */
 
-
 void read_user_input(char *user_input, size_t user_input_size)
 {
 	char *string_copy, *generated_token, *delimeter = " ";
@@ -34,7 +33,7 @@ void read_user_input(char *user_input, size_t user_input_size)
 		generated_token = strtok(NULL, delimeter);
 	}
 	number_of_tokens++;
-	new_tokens = malloc(sizeof(char *) * number_of_tokens);
+	new_tokens = malloc(sizeof(char *) * (number_of_tokens + 1));
 	if (new_tokens == NULL)
 	{
 		free(new_tokens);
@@ -50,13 +49,13 @@ void read_user_input(char *user_input, size_t user_input_size)
 	} */
 	for (i = 0; generated_token != NULL; i++)
 	{
-		new_tokens[i] = malloc(sizeof(char) * (strlen(generated_token)));
+		new_tokens[i] = malloc(sizeof(char) * strlen(generated_token));
 		strcpy(new_tokens[i], generated_token);
 		generated_token = strtok(NULL, delimeter);
 	}
 	
 	new_tokens[i] = NULL;
-	free(new_tokens);
+	execute_command(new_tokens);
 	free(string_copy);
 	free(user_input);
 }
