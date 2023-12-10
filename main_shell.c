@@ -1,9 +1,7 @@
-#include "main.h"
+#include "shell_header.h"
 
 /**
  * main - main function
- * @argc: argument count
- * @argv: array of null terminated string
  * Return: Success
 */
 

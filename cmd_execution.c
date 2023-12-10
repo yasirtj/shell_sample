@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell_header.h"
 
 /**
  * execute_command - executes the user input command
@@ -8,13 +8,12 @@
 void execute_command(char **argv)
 {
 	char *string_cmd = NULL;
-	(void)string_cmd;
 
 	if (argv != NULL)
 	{
 		string_cmd = argv[0];
 	
-		if (execve(argv[0], argv, NULL) == -1)
+		if (execve(string_cmd, argv, NULL) == -1)
 		{
 			custom_exit(1, "Command not found!\n");
 		};

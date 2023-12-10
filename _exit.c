@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell_header.h"
 
 /**
  * custom_exit - custom version of exit function

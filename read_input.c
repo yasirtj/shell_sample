@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell_header.h"
 
 /**
  * read_user_input - reads user input
@@ -9,7 +9,7 @@
 
 void read_user_input(char *user_input, size_t user_input_size)
 {
-	char *string_copy, *generated_token, *delimeter = " ";
+	char *string_copy = NULL, *generated_token, *delimeter = " \n";
 	char **new_tokens;
 	ssize_t read_char_num;
 	size_t number_of_tokens = 0, i = 0;
@@ -40,23 +40,15 @@ void read_user_input(char *user_input, size_t user_input_size)
 		custom_exit(1, "Failed to allocate memory for your tokens");
 	}
 	generated_token = strtok(string_copy, delimeter);
-	/* while (generated_token != NULL)
+	while (generated_token != NULL)
 	{
 	new_tokens[i] = malloc(sizeof(char) * (strlen(generated_token)));
 		strcpy(new_tokens[i], generated_token);
 		generated_token = strtok(NULL, delimeter);	
 		i++;
-	} */
-	for (i = 0; generated_token != NULL; i++)
-	{
-		new_tokens[i] = malloc(sizeof(char) * strlen(generated_token));
-		strcpy(new_tokens[i], generated_token);
-		generated_token = strtok(NULL, delimeter);
 	}
-	
-	/* new_tokens[i] = NULL;
-	execute_command(new_tokens);*/
-
+	new_tokens[i] = NULL;
+	execute_command(new_tokens);
 	free(string_copy);
 	free(user_input);
 }

@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell_header.h"
 
 /**
  * view_prompt - prompts user to enter output
