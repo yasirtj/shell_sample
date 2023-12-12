@@ -38,12 +38,13 @@ char **tokenize_cmd(char *string, char *delimeter)
 	generated_token = strtok(string_copy, delimeter);
 	while (generated_token != NULL)
 	{
-		new_tokens[i] = malloc(sizeof(char) * (strlen(generated_token ) + 1));
+		new_tokens[i] = malloc(sizeof(char) * (strlen(generated_token) + 1));
 		strcpy(new_tokens[i], generated_token);
 		generated_token = strtok(NULL, delimeter);
 		i++;
 	}
 	new_tokens[i] = NULL;
 	free(string_copy);
+	string_copy = NULL;
 	return (new_tokens);
 }
