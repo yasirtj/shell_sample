@@ -57,7 +57,7 @@ void read_user_input(char *user_input, size_t user_input_size)
 	}
 	new_tokens[i] = NULL;
 	/* free(string_copy); */
- 	execute_command(new_tokens);
+	execute_command(new_tokens);
 	for (i = 0; new_tokens[i] != NULL; i++)
 	{
 		free(new_tokens[i]);
