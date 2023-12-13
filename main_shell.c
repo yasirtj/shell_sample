@@ -13,14 +13,21 @@ int main(void)
 	/* size_t i; */
 	size_t cmd_size = 0;
 
-	/* char **argv = malloc(sizeof(char *) * (cmd_size + 1)); */
+/* 	char **argv = malloc(sizeof(char *) * (cmd_size + 1)); */
 
 	for (;;)
 	{
-		view_prompt();
+		if (isatty(STDIN_FILENO))
+		{
+			view_prompt();
+			write(1, "$ ", 2);
+		}
+		else
+		{
+			view_prompt();
+		}
 		read_user_input(user_input, cmd_size);
 		free(user_input);
-		user_input = NULL;
 	}
 	return (0);
 }

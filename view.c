@@ -9,6 +9,6 @@ void view_prompt(void)
 {
 	const char *view_shell;
 
-	view_shell = "shell$ ";
+	view_shell = "shell";
 	io_print(view_shell);
 }

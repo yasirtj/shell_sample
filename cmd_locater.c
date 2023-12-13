@@ -29,6 +29,7 @@ char *cmd_locater(char *string_cmd)
 				perror("ERROR\n");
 				free(fp);
 				fp = NULL;
+				custom_free(cmd_path_copy);
 				exit(EXIT_FAILURE);
 			}
 			if (token != NULL && string_cmd != NULL)
@@ -37,6 +38,7 @@ char *cmd_locater(char *string_cmd)
 				_strcat(fp, "/");
 				_strcat(fp, string_cmd);
 				fp[cmd_length + dir_len + 1] = '\0';
+
 				/* strcat(fp, "\0"); */
 			}
 			if (stat(fp, &bfr) == 0)
@@ -45,21 +47,28 @@ char *cmd_locater(char *string_cmd)
 				free(fp);
 				fp = NULL;
 				/* return (fp); */
+				custom_free(cmd_path_copy);
 				return (execve_path);
 			}
 			else
 			{
-				free(fp);
-				fp = NULL;
+				execve_path = NULL;
+				custom_free(execve_path);
+				custom_free(fp);
 				token = strtok(NULL, ":");
 			}
 		}
+		free(fp);
 		if (stat(string_cmd, &bfr) == 0)
 		{
+			/* custom_free(cmd_path_copy); */
 			return (string_cmd);
-			free(cmd_path_copy);
-			cmd_path_copy = NULL;
+			/*free(cmd_path_copy);*/
+			/*cmd_path_copy = NULL; */
 		}
+		/* custom_free(cmd_path_copy); */
+		free(fp);
+		fp = NULL;
 		return (NULL);
 	}
 	return (NULL);

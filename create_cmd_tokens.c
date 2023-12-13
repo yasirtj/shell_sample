@@ -46,5 +46,6 @@ char **tokenize_cmd(char *string, char *delimeter)
 	new_tokens[i] = NULL;
 	free(string_copy);
 	string_copy = NULL;
+	custom_free(string);
 	return (new_tokens);
 }

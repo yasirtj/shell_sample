@@ -22,8 +22,8 @@ void read_user_input(char *user_input, size_t user_input_size)
 	string_copy = malloc(sizeof(char) * (read_char_num + 1));
 	if (string_copy == NULL || user_input == NULL)
 	{
-		free(string_copy);
-		string_copy = NULL;
+		custom_free(string_copy);
+		custom_free(user_input);
 		custom_exit(1, "Failed to allocate memory!\n");
 	}
 	else
@@ -57,7 +57,7 @@ void read_user_input(char *user_input, size_t user_input_size)
 	}
 	new_tokens[i] = NULL;
 	/* free(string_copy); */
-	execute_command(new_tokens);
+ 	execute_command(new_tokens);
 	for (i = 0; new_tokens[i] != NULL; i++)
 	{
 		free(new_tokens[i]);
